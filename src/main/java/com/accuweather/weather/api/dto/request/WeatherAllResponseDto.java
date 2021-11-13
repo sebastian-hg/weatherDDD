@@ -1,5 +1,6 @@
-package com.accuweather.weather.api.dto;
+package com.accuweather.weather.api.dto.request;
 
+import com.accuweather.weather.api.helper.IResponseSuccess;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -14,10 +15,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class Weather {
+public class WeatherAllResponseDto implements IResponseSuccess {
+    Coord coord;
+    Weather weather;
+    String base;
+    Main main;
+    Integer visibility;
+    Wind wind;
+    Clouds clouds;
+    Integer dt;
+    Sys sys;
+    Integer timeZone;
     Long id;
-    String main;
-    String description;
-    String icon;
-
+    String name;
+    Integer cod;
 }

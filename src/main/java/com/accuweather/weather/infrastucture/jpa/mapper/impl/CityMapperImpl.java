@@ -7,7 +7,6 @@ import com.accuweather.weather.infrastucture.jpa.mapper.CountryMapper;
 import com.accuweather.weather.infrastucture.jpa.mapper.WeatherConditionMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class CityMapperImpl implements CityMapper {
         List<City> cityList = new ArrayList<>();
         jpaCities.forEach(jpaCity -> toDomain(jpaCity)
                 .map(cityList::add));
-        return Mono.just(cityList) ;
+        return Mono.just(cityList);
     }
 
     @Override

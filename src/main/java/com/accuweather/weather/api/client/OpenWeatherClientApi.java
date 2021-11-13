@@ -1,6 +1,6 @@
 package com.accuweather.weather.api.client;
 
-import com.accuweather.weather.api.dto.WeatherAllResponseDto;
+import com.accuweather.weather.api.dto.request.WeatherAllResponseDto;
 import reactor.core.publisher.Mono;
 
 public interface OpenWeatherClientApi {

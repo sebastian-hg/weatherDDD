@@ -1,4 +1,4 @@
-package com.accuweather.weather.api.dto;
+package com.accuweather.weather.api.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -14,11 +14,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class Sys {
-    Integer type;
+public class Weather {
     Long id;
-    String country;
-    Integer sunrise;
-    Integer sunset;
+    String main;
+    String description;
+    String icon;
 
 }

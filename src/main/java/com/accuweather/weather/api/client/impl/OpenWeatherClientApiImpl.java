@@ -2,13 +2,13 @@ package com.accuweather.weather.api.client.impl;
 
 import com.accuweather.weather.api.client.OpenWeatherClientApi;
 import com.accuweather.weather.api.configuration.ClientConfigProperties;
-import com.accuweather.weather.api.dto.WeatherAllResponseDto;
-import com.accuweather.weather.core.exception.ErrorInCallToApiException;
+import com.accuweather.weather.api.dto.request.WeatherAllResponseDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientException;
 import reactor.core.publisher.Mono;
 
 @AllArgsConstructor
@@ -28,6 +28,7 @@ public class OpenWeatherClientApiImpl implements OpenWeatherClientApi {
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
                 .bodyToMono(WeatherAllResponseDto.class)
-                .onErrorMap(e -> new ErrorInCallToApiException("Error during call in API" + e.getMessage()));
+                .onErrorMap(e -> new WebClientException("Error during call in API" + e.getMessage()) {
+                });
     }
 }
