@@ -14,7 +14,8 @@ public class RouterConfiguration {
 
     @Bean
     public RouterFunction<ServerResponse> routeRequest(GetWeatherByCityHandler getWeatherByCityHandler) {
-        return route(RequestPredicates.GET("/weather-by-city"), getWeatherByCityHandler::executeWithoutBodyValidation);
+        return route(RequestPredicates.GET("/weather"), getWeatherByCityHandler::executeWithoutBodyValidation)
+                ;
     }
 
 }

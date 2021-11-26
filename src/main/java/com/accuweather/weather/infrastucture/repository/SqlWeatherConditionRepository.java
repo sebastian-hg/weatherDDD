@@ -5,10 +5,12 @@ import com.accuweather.weather.core.repository.WeatherConditionsRepository;
 import com.accuweather.weather.infrastucture.jpa.mapper.WeatherConditionMapper;
 import com.accuweather.weather.infrastucture.jpa.repository.JpaWeatherConditionRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@Log4j2
 @Repository
 @AllArgsConstructor
 public class SqlWeatherConditionRepository implements WeatherConditionsRepository {
@@ -29,6 +31,7 @@ public class SqlWeatherConditionRepository implements WeatherConditionsRepositor
 
     @Override
     public Mono<WeatherCondition> save(WeatherCondition weatherConditions) {
+        log.debug("Receiving weatherConditions {}", weatherConditions);
         return weatherConditionMapper.toJpa(weatherConditions).map(jpaWeatherCondition::save)
                 .flatMap(weatherConditionMapper::toDomain);
     }

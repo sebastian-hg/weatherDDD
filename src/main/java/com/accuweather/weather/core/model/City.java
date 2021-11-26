@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class City {
-    Long id;
-    String name;
-    Country country;
-    WeatherCondition weatherCondition;
+    private Long id;
+    private String name;
+    private Country country;
+    private WeatherCondition weatherCondition;
 }

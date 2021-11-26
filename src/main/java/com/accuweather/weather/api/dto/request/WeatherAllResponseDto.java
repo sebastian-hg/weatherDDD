@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -17,7 +19,7 @@ import lombok.NoArgsConstructor;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class WeatherAllResponseDto implements IResponseSuccess {
     Coord coord;
-    Weather weather;
+    List<Weather> weather;
     String base;
     Main main;
     Integer visibility;

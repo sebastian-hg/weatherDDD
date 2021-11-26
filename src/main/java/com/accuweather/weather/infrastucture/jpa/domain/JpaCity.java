@@ -15,14 +15,13 @@ import javax.persistence.*;
 @Table(name = "CITY")
 public class JpaCity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String name;
-    @ManyToOne
+    private Long id;
+    private String name;
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CITY_COUNTRY")
-    JpaCountry jpaCountry;
+    private JpaCountry jpaCountry;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "WEATHER_CONDITION_ID", referencedColumnName = "ID")
-    JpaWeatherCondition jpaWeatherCondition;
+    private JpaWeatherCondition jpaWeatherCondition;
 
 }

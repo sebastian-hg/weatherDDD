@@ -1,12 +1,20 @@
 package com.accuweather.weather.api.dto.response;
 
 import com.accuweather.weather.api.helper.IResponseSuccess;
-import com.accuweather.weather.core.model.City;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+
+import java.time.LocalDateTime;
 
 @Data
-
+@Builder
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class CityDto extends City implements IResponseSuccess {
+public class CityDto implements IResponseSuccess {
+    private Long idReference;
+    private String city;
+    private String country;
+    private LocalDateTime timeNow;
+    private Double temperature;
+
 }

@@ -2,9 +2,7 @@ package com.accuweather.weather.infrastucture.jpa.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -17,9 +15,12 @@ import javax.persistence.Table;
 @Table(name = "COUNTRY")
 public class JpaCountry {
     @Id
-    Long id;
-    String name;
-    Integer PostalCode;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Builder.Default
+    private Long id = 0L;
+    private Long idSource;
+    private String name;
+    private Integer postalCode;
 
 
 }

@@ -35,7 +35,7 @@ public class CountryMapperTest {
         jpaCountry = JpaCountry.builder()
                 .id(1L)
                 .name("ven")
-                .PostalCode(58)
+                .postalCode(58)
                 .build();
     }
 
@@ -43,7 +43,7 @@ public class CountryMapperTest {
         countryExpected = Country.builder()
                 .id(1L)
                 .name("ven")
-                .PostalCode(58)
+                .postalCode(58)
                 .build();
     }
 
@@ -57,8 +57,9 @@ public class CountryMapperTest {
                 .expectComplete()
                 .verify();
     }
+
     @Test
-    void givenRequestWhenExecuteToJpaThenIsOk(){
+    void givenRequestWhenExecuteToJpaThenIsOk() {
         givenJpaRequest();
         givenJpaResponse();
         whenExecuteToJpa();
@@ -66,10 +67,10 @@ public class CountryMapperTest {
     }
 
     private void givenJpaRequest() {
-        country= Country.builder()
+        country = Country.builder()
                 .id(1L)
                 .name("arg")
-                .PostalCode(54)
+                .postalCode(54)
                 .build();
     }
 
@@ -77,7 +78,7 @@ public class CountryMapperTest {
         jpaExpected = JpaCountry.builder()
                 .id(1L)
                 .name("arg")
-                .PostalCode(54)
+                .postalCode(54)
                 .build();
     }
 

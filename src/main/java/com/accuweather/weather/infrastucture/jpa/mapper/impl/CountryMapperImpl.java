@@ -3,26 +3,36 @@ package com.accuweather.weather.infrastucture.jpa.mapper.impl;
 import com.accuweather.weather.core.model.Country;
 import com.accuweather.weather.infrastucture.jpa.domain.JpaCountry;
 import com.accuweather.weather.infrastucture.jpa.mapper.CountryMapper;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+@Log4j2
 @Service
 public class CountryMapperImpl implements CountryMapper {
     @Override
     public Mono<Country> toDomain(JpaCountry jpaCountry) {
-        return Mono.just(Country.builder()
+        log.debug("(infrastructure) information jpaCountry receiving {}", jpaCountry);
+        Country domain = Country.builder()
                 .id(jpaCountry.getId())
+                .idSource(jpaCountry.getIdSource())
                 .name(jpaCountry.getName())
-                .PostalCode(jpaCountry.getPostalCode())
-                .build());
+                .postalCode(jpaCountry.getPostalCode())
+                .build();
+        log.debug("(infrastructure) result mapped to domain {}", domain);
+        return Mono.just(domain);
     }
 
     @Override
     public Mono<JpaCountry> toJpa(Country country) {
-        return Mono.just(JpaCountry.builder()
+        log.debug("(infrastructure) information country receiving country {}", country);
+        JpaCountry jpa = JpaCountry.builder()
                 .id(country.getId())
+                .idSource(country.getIdSource())
                 .name(country.getName())
-                .PostalCode(country.getPostalCode())
-                .build());
+                .postalCode(country.getPostalCode())
+                .build();
+        log.debug("(infrastructure) result mapped to jpa {}", jpa);
+        return Mono.just(jpa);
     }
 }
