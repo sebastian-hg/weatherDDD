@@ -29,6 +29,7 @@ public class CityMapperImpl implements CityMapper {
 
     @Override
     public Mono<City> toDomain(JpaCity jpaCity) {
+        // TODO: AMVP siempre es bueno validar si jpaCity es null, si es null devolver un Mono.error() con la excepción
         return countryMapper.toDomain(jpaCity.getJpaCountry())
                 .zipWith(weatherConditionMapper.toDomain(jpaCity.getJpaWeatherCondition()))
                 .map(tuple2 -> City.builder()

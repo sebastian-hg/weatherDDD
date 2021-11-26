@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class Clouds {
+public class Clouds { //TODO: AMVP los nombres de las clases siempre van en singular
     Integer all;
 }
