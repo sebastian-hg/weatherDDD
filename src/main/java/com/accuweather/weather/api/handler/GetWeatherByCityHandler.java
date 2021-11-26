@@ -24,7 +24,7 @@ public class GetWeatherByCityHandler extends Handler<Object, Validator> {
 
     @Override
     protected Mono<ServerResponse> execute(Mono<Object> noBody, ServerRequest serverRequest) {
-        var city = serverRequest.queryParam("city").get();
+        var city = serverRequest.queryParam("city").get(); // TODO: AMVP ¿cómo mejorarías el código para eliminar la advertencia?
         log.info("Receiving request {}", city);
         return getWeatherByCity.execute(city)
                 .flatMap(cityResponse -> {

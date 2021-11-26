@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 public class Country {
     Long id;
     String name;
-    Integer PostalCode;
+    Integer PostalCode; // TODO: AMVP pasar a minúscula
 }

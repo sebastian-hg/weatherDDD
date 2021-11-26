@@ -19,7 +19,7 @@ public class JpaCountry {
     @Id
     Long id;
     String name;
-    Integer PostalCode;
+    Integer PostalCode; // TODO: AMVP cambiar a minúscula
 
 
 }
