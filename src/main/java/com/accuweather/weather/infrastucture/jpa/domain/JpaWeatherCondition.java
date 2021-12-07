@@ -2,9 +2,7 @@ package com.accuweather.weather.infrastucture.jpa.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -18,7 +16,9 @@ import java.time.LocalDateTime;
 @Table(name = "WEATHER_CONDITION")
 public class JpaWeatherCondition {
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Builder.Default
+    private Long id=0L;
     private Double temperature;
     private Double wind;
     private Double humidity;

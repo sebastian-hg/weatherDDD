@@ -18,6 +18,11 @@ server:
   port: 8082
 logging:
   level:
+    com:
+      accuweather:
+        weather: DEBUG
     org:
       springframework:
-        web: DEBUG
+        web: INFO
+client:
+  openWeatherUrl : api.openweathermap.org/data/2.5/weather

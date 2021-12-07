@@ -46,7 +46,7 @@ public class CityMapperTest {
         jpaCountryRequest = JpaCountry.builder()
                 .id(5L)
                 .name("ven")
-                .PostalCode(58)
+                .postalCode(58)
                 .build();
         jpaWeatherConditionRequest = JpaWeatherCondition.builder()
                 .id(2L)
@@ -79,7 +79,7 @@ public class CityMapperTest {
         country = Country.builder()
                 .id(1L)
                 .name("ven")
-                .PostalCode(58)
+                .postalCode(58)
                 .build();
         weatherCondition = WeatherCondition.builder()
                 .id(2L)

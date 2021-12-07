@@ -25,11 +25,18 @@ public class GetWeatherByCityHandler extends Handler<Object, Validator> {
     @Override
     protected Mono<ServerResponse> execute(Mono<Object> noBody, ServerRequest serverRequest) {
         var city = serverRequest.queryParam("city").get();
-        log.info("Receiving request {}", city);
+        log.info("(api) Receiving request {}", city);
         return getWeatherByCity.execute(city)
                 .flatMap(cityResponse -> {
-                    var dto = CityDto.builder().build();
-                    return responseHelper.buildOK();
+                    var dto = CityDto.builder()
+                            .idReference(cityResponse.getId())
+                            .city(cityResponse.getName())
+                            .country(cityResponse.getCountry().getName())
+                            .temperature(cityResponse.getWeatherCondition().getTemperature())
+                            .timeNow(cityResponse.getWeatherCondition().getTime())
+                            .build();
+                    log.debug("(api) response handler {}",dto);
+                    return responseHelper.buildOK(Mono.just(dto));
                 });
     }
 }

@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Country {
-    Long id;
-    String name;
-    Integer PostalCode;
+    private Long id;
+    private Long idSource;
+    private String name;
+    private Integer postalCode;
 }
